@@ -30,5 +30,6 @@ function handleCallConnected(e) {
 function handleCallDisconnected(e) {
   var index = calls.indexOf(e.call);
   if (index > -1) calls.splice(index, 1);
+  for (var i=0; i < calls.length; i++) calls[i].sendMessage(JSON.stringify({participants: calls.length}));
   if (calls.length === 0) VoxEngine.terminate();
 }

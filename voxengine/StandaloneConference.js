@@ -23,7 +23,7 @@ VoxEngine.addEventListener(AppEvents.CallAlerting, function(e) {
 function handleCallConnected(e) {
   VoxEngine.sendMediaBetween(conf, e.call);
   calls.push(e.call);
-  e.call.sendMessage(JSON.stringify({participants: calls.length}));
+  for (var i=0; i < calls.length; i++) calls[i].sendMessage(JSON.stringify({participants: calls.length}));
 }
 
 // No more calls - terminate the session
